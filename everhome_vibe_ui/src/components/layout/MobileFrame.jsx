@@ -1,4 +1,4 @@
-export default function MobileFrame({ children, scale = 1, className = '' }) {
+export default function MobileFrame({ children, scale = 1, className = '', interactive = true }) {
   return (
     <div
       className={`relative flex-shrink-0 ${className}`}
@@ -31,7 +31,7 @@ export default function MobileFrame({ children, scale = 1, className = '' }) {
         />
 
         {/* Content area */}
-        <div className="phone-scroll w-full h-full overflow-y-auto overflow-x-hidden">
+        <div className={`phone-scroll w-full h-full overflow-x-hidden ${interactive ? 'overflow-y-auto' : 'overflow-y-hidden pointer-events-none'}`}>
           {children}
         </div>
       </div>

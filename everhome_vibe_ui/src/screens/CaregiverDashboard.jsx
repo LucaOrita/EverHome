@@ -3,8 +3,11 @@ import BottomNav from '../components/layout/BottomNav';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import StatusBadge from '../components/ui/StatusBadge';
+import { useTranslation } from '../i18n/LanguageContext';
 
 export default function CaregiverDashboard({ onNavigate }) {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col min-h-full bg-bg-page">
       <StatusBar variant="dark" />
@@ -13,35 +16,35 @@ export default function CaregiverDashboard({ onNavigate }) {
         {/* Header */}
         <div className="mt-sp-6 flex items-start justify-between">
           <div>
-            <p className="text-sm text-text-secondary">Monitoring</p>
-            <h1 className="text-h1 text-text-primary">Margaret&apos;s Home</h1>
-            <StatusBadge label="All Safe" color="safe" className="mt-sp-2" />
+            <p className="text-sm text-text-secondary">{t('caregiverDashboard.monitoring')}</p>
+            <h1 className="text-h1 text-text-primary">Margaret{t('caregiverDashboard.home')}</h1>
+            <StatusBadge label={t('common.allSafe')} color="safe" className="mt-sp-2" />
           </div>
-          <Button variant="badge">CARE plan</Button>
+          <Button variant="badge">{t('caregiverDashboard.carePlan')}</Button>
         </div>
 
         {/* Feature cards row */}
         <div className="mt-sp-5 grid grid-cols-2 gap-sp-3 card-stagger">
           <Card variant="feature" className="animate-slide-up">
             <p className="text-xs uppercase text-text-secondary tracking-wide font-semibold">
-              Motion In
+              {t('caregiverDashboard.motionIn')}
             </p>
-            <h3 className="text-h3 font-bold text-text-primary mt-sp-1">Bedroom</h3>
-            <p className="text-sm text-text-tertiary mt-sp-1">now</p>
+            <h3 className="text-h3 font-bold text-text-primary mt-sp-1">{t('caregiverDashboard.bedroom')}</h3>
+            <p className="text-sm text-text-tertiary mt-sp-1">{t('caregiverDashboard.now')}</p>
           </Card>
 
           <Card variant="feature" className="animate-slide-up">
             <p className="text-xs uppercase text-text-secondary tracking-wide font-semibold">
-              Front Door
+              {t('caregiverDashboard.frontDoor')}
             </p>
-            <h3 className="text-h3 font-bold text-status-safe mt-sp-1">Locked</h3>
+            <h3 className="text-h3 font-bold text-status-safe mt-sp-1">{t('caregiverDashboard.locked')}</h3>
             <p className="text-sm text-text-tertiary mt-sp-1">Since 8:12 AM</p>
           </Card>
         </div>
 
         {/* Sensors label */}
         <p className="text-xs uppercase text-text-secondary tracking-wide font-semibold mt-sp-5">
-          Sensors
+          {t('caregiverDashboard.sensors')}
         </p>
 
         {/* Sensor list */}
@@ -50,9 +53,9 @@ export default function CaregiverDashboard({ onNavigate }) {
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-body-bold text-text-primary">
-                  Fall Detector – Bedroom
+                  {t('caregiverDashboard.fallDetectorBedroom')}
                 </h3>
-                <p className="text-sm text-text-secondary">7 days clear</p>
+                <p className="text-sm text-text-secondary">{t('caregiverDashboard.daysClear')}</p>
               </div>
               <StatusBadge color="info" />
             </div>
@@ -62,9 +65,9 @@ export default function CaregiverDashboard({ onNavigate }) {
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-body-bold text-text-primary">
-                  Motion – Living Room
+                  {t('caregiverDashboard.motionLivingRoom')}
                 </h3>
-                <p className="text-sm text-text-secondary">Active – normal pattern</p>
+                <p className="text-sm text-text-secondary">{t('caregiverDashboard.activeNormal')}</p>
               </div>
               <StatusBadge color="info" />
             </div>
@@ -74,10 +77,10 @@ export default function CaregiverDashboard({ onNavigate }) {
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-body-bold text-text-primary">
-                  Smoke Alarm – Kitchen
+                  {t('caregiverDashboard.smokeAlarmKitchen')}
                 </h3>
                 <p className="text-sm text-status-warning">
-                  Low battery – replace soon
+                  {t('caregiverDashboard.lowBattery')}
                 </p>
               </div>
               <StatusBadge color="warning" />
@@ -88,9 +91,9 @@ export default function CaregiverDashboard({ onNavigate }) {
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-body-bold text-text-primary">
-                  Panic Button – Bath
+                  {t('caregiverDashboard.panicButtonBath')}
                 </h3>
-                <p className="text-sm text-text-secondary">Ready – not triggered</p>
+                <p className="text-sm text-text-secondary">{t('caregiverDashboard.readyNotTriggered')}</p>
               </div>
               <StatusBadge color="info" />
             </div>
@@ -100,10 +103,10 @@ export default function CaregiverDashboard({ onNavigate }) {
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-body-bold text-text-primary">
-                  Sleep Sensor – Bedroom
+                  {t('caregiverDashboard.sleepSensorBedroom')}
                 </h3>
                 <p className="text-sm text-text-secondary">
-                  8h 20m last night – good
+                  {t('caregiverDashboard.sleepData')}
                 </p>
               </div>
               <StatusBadge color="info" />

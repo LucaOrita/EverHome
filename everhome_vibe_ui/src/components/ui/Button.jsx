@@ -26,6 +26,11 @@ const variants = {
     height: 'py-1.5 px-4',
     radius: 'rounded-full',
   },
+  splash: {
+    base: 'bg-white text-primary-dark font-button w-full border-2 border-white hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] active:brightness-95',
+    height: 'h-14',
+    radius: 'rounded-full',
+  },
 };
 
 export default function Button({

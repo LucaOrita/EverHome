@@ -1,12 +1,16 @@
 import { useState, useCallback, useEffect } from 'react';
 import MobileFrame from './components/layout/MobileFrame';
+import LanguageToggle from './components/ui/LanguageToggle';
 
 import SplashScreen from './screens/SplashScreen';
 import LoginEmail from './screens/LoginEmail';
 import LoginQRCode from './screens/LoginQRCode';
 import RoleSelection from './screens/RoleSelection';
+import HowItWorks from './screens/HowItWorks';
 import SeniorDashboard from './screens/SeniorDashboard';
 import CaregiverDashboard from './screens/CaregiverDashboard';
+import AlertScreen from './screens/AlertScreen';
+import EmergencyConfirmed from './screens/EmergencyConfirmed';
 import SubscriptionPlans from './screens/SubscriptionPlans';
 import Maintenance from './screens/Maintenance';
 import Support from './screens/Support';
@@ -16,8 +20,11 @@ const screens = [
   { id: 'login-email', label: 'Login – Email', component: LoginEmail },
   { id: 'login-qr', label: 'Login – QR Code', component: LoginQRCode },
   { id: 'role-selection', label: 'Role Selection', component: RoleSelection },
+  { id: 'how-it-works', label: 'How It Works', component: HowItWorks },
   { id: 'senior-dashboard', label: 'Senior Dashboard', component: SeniorDashboard },
   { id: 'caregiver-dashboard', label: 'Caregiver Dashboard', component: CaregiverDashboard },
+  { id: 'alert-screen', label: 'Alert Screen', component: AlertScreen },
+  { id: 'emergency-confirmed', label: 'Emergency Confirmed', component: EmergencyConfirmed },
   { id: 'subscription-plans', label: 'Subscription Plans', component: SubscriptionPlans },
   { id: 'maintenance', label: 'Maintenance', component: Maintenance },
   { id: 'support', label: 'Support', component: Support },
@@ -69,7 +76,7 @@ export default function App() {
           Smart home monitoring for seniors — Design Showcase
         </p>
 
-        {/* Mode toggle */}
+        {/* Mode toggle + Language toggle */}
         <div className="flex items-center justify-center gap-sp-4 mt-sp-6">
           <button
             onClick={() => setMode('gallery')}
@@ -97,6 +104,7 @@ export default function App() {
           >
             Interactive
           </button>
+          <LanguageToggle />
         </div>
       </header>
 
@@ -111,7 +119,7 @@ export default function App() {
                   className="cursor-pointer transition-transform duration-300 hover:scale-105"
                   onClick={() => setModalScreen(screen.id)}
                 >
-                  <MobileFrame scale={scale}>
+                  <MobileFrame scale={scale} interactive={false}>
                     <ScreenComponent onNavigate={() => {}} />
                   </MobileFrame>
                 </div>

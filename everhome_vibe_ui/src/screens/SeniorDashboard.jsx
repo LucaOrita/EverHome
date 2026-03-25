@@ -4,8 +4,11 @@ import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import StatusBadge from '../components/ui/StatusBadge';
 import { Home, DoorOpen, Thermometer, Activity, ShieldAlert } from 'lucide-react';
+import { useTranslation } from '../i18n/LanguageContext';
 
 export default function SeniorDashboard({ onNavigate }) {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col min-h-full bg-bg-page">
       <StatusBar variant="dark" />
@@ -13,7 +16,9 @@ export default function SeniorDashboard({ onNavigate }) {
       <div className="flex-1 px-sp-6 pb-sp-4 overflow-y-auto">
         {/* Greeting */}
         <div className="mt-sp-6">
-          <p className="text-body text-text-secondary">Good morning,</p>
+          <p className="text-body text-text-secondary">
+            {t('seniorDashboard.greeting')('Margaret', 'morning')}
+          </p>
           <h1 className="text-display text-primary-medium">Margaret</h1>
         </div>
 
@@ -24,10 +29,10 @@ export default function SeniorDashboard({ onNavigate }) {
             <div className="flex items-start gap-sp-3">
               <Home size={24} className="text-primary-dark mt-0.5" />
               <div>
-                <h3 className="text-h3 text-text-primary">Home status</h3>
-                <StatusBadge label="All Safe" color="safe" className="mt-sp-2" />
+                <h3 className="text-h3 text-text-primary">{t('seniorDashboard.homeStatus')}</h3>
+                <StatusBadge label={t('common.allSafe')} color="safe" className="mt-sp-2" />
                 <p className="text-sm text-text-tertiary mt-sp-1">
-                  Last updated: 11:08 AM
+                  {t('seniorDashboard.lastUpdated')} 11:08 AM
                 </p>
               </div>
             </div>
@@ -38,8 +43,8 @@ export default function SeniorDashboard({ onNavigate }) {
             <div className="flex items-center gap-sp-3">
               <DoorOpen size={24} className="text-primary-dark" />
               <div>
-                <h3 className="text-h3 text-text-primary">Front door</h3>
-                <p className="text-sm text-text-secondary">Closed</p>
+                <h3 className="text-h3 text-text-primary">{t('seniorDashboard.frontDoor')}</h3>
+                <p className="text-sm text-text-secondary">{t('seniorDashboard.closed')}</p>
               </div>
             </div>
           </Card>
@@ -49,7 +54,7 @@ export default function SeniorDashboard({ onNavigate }) {
             <div className="flex items-center gap-sp-3">
               <Thermometer size={24} className="text-primary-dark" />
               <div>
-                <h3 className="text-h3 text-text-primary">Temperature</h3>
+                <h3 className="text-h3 text-text-primary">{t('seniorDashboard.temperature')}</h3>
                 <p className="text-sm text-text-secondary">22°C</p>
               </div>
             </div>
@@ -60,8 +65,8 @@ export default function SeniorDashboard({ onNavigate }) {
             <div className="flex items-center gap-sp-3">
               <Activity size={24} className="text-primary-dark" />
               <div>
-                <h3 className="text-h3 text-text-primary">Motion Sensor</h3>
-                <p className="text-sm text-text-secondary">Active</p>
+                <h3 className="text-h3 text-text-primary">{t('seniorDashboard.motionSensor')}</h3>
+                <p className="text-sm text-text-secondary">{t('seniorDashboard.active')}</p>
               </div>
             </div>
           </Card>
@@ -71,8 +76,8 @@ export default function SeniorDashboard({ onNavigate }) {
             <div className="flex items-center gap-sp-3">
               <ShieldAlert size={24} className="text-primary-dark" />
               <div>
-                <h3 className="text-h3 text-text-primary">Fall Detector</h3>
-                <p className="text-sm text-text-secondary">Active</p>
+                <h3 className="text-h3 text-text-primary">{t('seniorDashboard.fallDetector')}</h3>
+                <p className="text-sm text-text-secondary">{t('seniorDashboard.active')}</p>
               </div>
             </div>
           </Card>
@@ -80,7 +85,7 @@ export default function SeniorDashboard({ onNavigate }) {
 
         {/* Emergency Button */}
         <div className="mt-sp-5 mb-sp-4">
-          <Button variant="emergency">Emergency</Button>
+          <Button variant="emergency">{t('common.emergency')}</Button>
         </div>
       </div>
 

@@ -1,6 +1,9 @@
 import StatusBar from '../components/layout/StatusBar';
+import { useTranslation } from '../i18n/LanguageContext';
 
 export default function RoleSelection({ onNavigate }) {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col min-h-full bg-bg-page">
       <StatusBar variant="dark" />
@@ -8,12 +11,12 @@ export default function RoleSelection({ onNavigate }) {
       <div className="flex-1 px-sp-6 flex flex-col">
         {/* Header */}
         <div className="mt-sp-8">
-          <p className="text-h3 text-primary-light font-semibold">Welcome</p>
+          <p className="text-h3 text-primary-light font-semibold">{t('roleSelection.welcome')}</p>
           <h1 className="text-h1 text-text-primary mt-sp-2">
-            Who will be using EverHome?
+            {t('roleSelection.title')}
           </h1>
           <p className="text-body text-text-secondary mt-sp-3">
-            Choose your role to get the right experience
+            {t('roleSelection.subtitle')}
           </p>
         </div>
 
@@ -30,10 +33,10 @@ export default function RoleSelection({ onNavigate }) {
             "
             style={{ minHeight: 160 }}
           >
-            <p className="text-body text-white/80">I am a</p>
-            <h2 className="text-display text-white mt-sp-1">SENIOR</h2>
+            <p className="text-body text-white/80">{t('roleSelection.iAmA')}</p>
+            <h2 className="text-display text-white mt-sp-1">{t('roleSelection.senior')}</h2>
             <p className="text-sm text-white/70 mt-sp-3">
-              Simpler interface – large buttons, big text
+              {t('roleSelection.seniorDesc')}
             </p>
           </button>
 
@@ -48,10 +51,10 @@ export default function RoleSelection({ onNavigate }) {
             "
             style={{ minHeight: 160 }}
           >
-            <p className="text-body text-text-secondary">I am a</p>
-            <h2 className="text-display text-text-primary mt-sp-1">CAREGIVER</h2>
+            <p className="text-body text-text-secondary">{t('roleSelection.iAmA')}</p>
+            <h2 className="text-display text-text-primary mt-sp-1">{t('roleSelection.caregiver')}</h2>
             <p className="text-sm text-text-secondary mt-sp-3">
-              Full sensor dashboard, alerts and remote control
+              {t('roleSelection.caregiverDesc')}
             </p>
           </button>
         </div>

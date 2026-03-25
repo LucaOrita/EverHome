@@ -1,5 +1,5 @@
 export default function EverHomeLogo({ size = 80, variant = 'dark' }) {
-  const primaryColor = variant === 'light' ? '#FFFFFF' : '#0D3B66';
+  const color = variant === 'light' ? '#FFFFFF' : '#0D3B66';
 
   return (
     <svg
@@ -9,57 +9,63 @@ export default function EverHomeLogo({ size = 80, variant = 'dark' }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* House outline */}
+      {/* House outline — pentagon with pointed roof */}
       <path
-        d="M60 15L20 50V100H45V75H75V100H100V50L60 15Z"
-        stroke={primaryColor}
-        strokeWidth="5"
+        d="M60 12L18 48V106H102V48L60 12Z"
+        stroke={color}
+        strokeWidth="4.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        fill="none"
       />
 
-      {/* Protective hand curve */}
+      {/* Protective hand — fingers curving from upper-left downward */}
       <path
-        d="M35 80C35 65 42 55 55 50C48 58 46 65 48 75"
-        stroke={primaryColor}
-        strokeWidth="4"
+        d="M32 44C28 56 28 68 34 78"
+        stroke={color}
+        strokeWidth="3.5"
         strokeLinecap="round"
-        fill="none"
       />
       <path
-        d="M42 85C40 72 44 60 58 52"
-        stroke={primaryColor}
-        strokeWidth="4"
+        d="M40 37C35 50 34 64 38 76"
+        stroke={color}
+        strokeWidth="3.5"
         strokeLinecap="round"
-        fill="none"
+      />
+      <path
+        d="M48 34C43 48 42 62 44 74"
+        stroke={color}
+        strokeWidth="3.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M56 36C52 48 52 60 53 70"
+        stroke={color}
+        strokeWidth="3.5"
+        strokeLinecap="round"
       />
 
-      {/* WiFi signal arcs */}
+      {/* WiFi signal arcs — bottom right */}
       <path
-        d="M68 58C73 58 78 60 82 64"
-        stroke={primaryColor}
-        strokeWidth="3.5"
+        d="M73 85Q79 79 85 85"
+        stroke={color}
+        strokeWidth="3"
         strokeLinecap="round"
-        fill="none"
       />
       <path
-        d="M68 48C77 48 85 52 91 58"
-        stroke={primaryColor}
-        strokeWidth="3.5"
+        d="M69 79Q79 70 89 79"
+        stroke={color}
+        strokeWidth="3"
         strokeLinecap="round"
-        fill="none"
       />
       <path
-        d="M68 38C81 38 92 44 100 52"
-        stroke={primaryColor}
-        strokeWidth="3.5"
+        d="M65 73Q79 61 93 73"
+        stroke={color}
+        strokeWidth="3"
         strokeLinecap="round"
-        fill="none"
       />
 
       {/* WiFi dot */}
-      <circle cx="68" cy="67" r="3.5" fill={primaryColor} />
+      <circle cx="79" cy="91" r="3.5" fill={color} />
     </svg>
   );
 }

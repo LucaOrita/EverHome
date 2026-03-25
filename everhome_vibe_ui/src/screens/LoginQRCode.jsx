@@ -1,9 +1,11 @@
 import StatusBar from '../components/layout/StatusBar';
-import EverHomeLogo from '../components/icons/EverHomeLogo';
 import Toggle from '../components/ui/Toggle';
 import Button from '../components/ui/Button';
+import { useTranslation } from '../i18n/LanguageContext';
 
 export default function LoginQRCode({ onNavigate }) {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col min-h-full bg-bg-card">
       <StatusBar variant="dark" />
@@ -11,16 +13,16 @@ export default function LoginQRCode({ onNavigate }) {
       <div className="flex-1 px-sp-6 flex flex-col">
         {/* Compact header */}
         <div className="flex items-center justify-between mt-sp-4">
-          <span className="text-h3 text-primary-dark font-bold">EverHome</span>
+          <span className="text-h3 text-primary-dark font-bold">{t('common.appName')}</span>
         </div>
 
         {/* Toggle */}
         <div className="flex justify-center mt-sp-6">
           <Toggle
-            options={['Email', 'QR Code']}
-            activeOption="QR Code"
+            options={[t('login.email'), t('login.qrCode')]}
+            activeOption={t('login.qrCode')}
             onToggle={(opt) => {
-              if (opt === 'Email') onNavigate?.('login-email');
+              if (opt === t('login.email')) onNavigate?.('login-email');
             }}
           />
         </div>
@@ -28,7 +30,7 @@ export default function LoginQRCode({ onNavigate }) {
         {/* QR Scanner area */}
         <div className="flex-1 flex flex-col items-center justify-center">
           <p className="text-body text-text-secondary text-center mb-sp-8">
-            Point camera at the QR code on the alarm system
+            {t('login.qrInstruction')}
           </p>
 
           {/* QR placeholder */}
@@ -56,7 +58,7 @@ export default function LoginQRCode({ onNavigate }) {
         {/* Done button */}
         <div className="mb-sp-8">
           <Button onClick={() => onNavigate?.('role-selection')}>
-            Done
+            {t('common.done')}
           </Button>
         </div>
       </div>
