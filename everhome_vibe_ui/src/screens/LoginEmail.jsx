@@ -18,12 +18,15 @@ export default function LoginEmail({ onNavigate }) {
           <EverHomeLogo size={80} variant="dark" />
         </div>
 
-        {/* App name */}
-        <h1 className="text-h1 text-primary-dark text-center mt-sp-4">
+        {/* App name — refined weight, elegant */}
+        <h1
+          className="text-display text-primary-dark text-center mt-sp-4"
+          style={{ fontWeight: 500 }}
+        >
           {t('common.appName')}
         </h1>
 
-        {/* Toggle */}
+        {/* Toggle pill — Email / QR Code */}
         <div className="flex justify-center mt-sp-8">
           <Toggle
             options={[t('login.email'), t('login.qrCode')]}
@@ -53,7 +56,7 @@ export default function LoginEmail({ onNavigate }) {
           </div>
         </div>
 
-        {/* Sign In */}
+        {/* Sign In — primary, navigates to role-selection */}
         <div className="mt-sp-6">
           <Button onClick={() => onNavigate?.('role-selection')}>
             {t('common.signIn')}
@@ -67,7 +70,7 @@ export default function LoginEmail({ onNavigate }) {
           <div className="flex-1 h-px bg-divider" />
         </div>
 
-        {/* Scan QR Code */}
+        {/* Scan QR Code — secondary, navigates to login-qr */}
         <Button variant="secondary" onClick={() => onNavigate?.('login-qr')}>
           {t('login.scanQrCode')}
         </Button>

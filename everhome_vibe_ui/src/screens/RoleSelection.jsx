@@ -22,9 +22,9 @@ export default function RoleSelection({ onNavigate }) {
 
         {/* Role cards */}
         <div className="mt-sp-8 flex flex-col gap-sp-4 card-stagger">
-          {/* Senior card */}
+          {/* Senior card — dark bg, white text */}
           <button
-            onClick={() => onNavigate?.('senior-dashboard')}
+            onClick={() => onNavigate?.('how-it-works')}
             className="
               animate-slide-up
               bg-primary-dark rounded-xl p-sp-6
@@ -38,14 +38,18 @@ export default function RoleSelection({ onNavigate }) {
             <p className="text-sm text-white/70 mt-sp-3">
               {t('roleSelection.seniorDesc')}
             </p>
+            <p className="text-sm text-white/70 italic mt-sp-2">
+              {t('roleSelection.seniorEmotional')}
+            </p>
           </button>
 
-          {/* Caregiver card */}
+          {/* Caregiver card — white bg with shadow, distinct from page */}
           <button
-            onClick={() => onNavigate?.('caregiver-dashboard')}
+            onClick={() => onNavigate?.('how-it-works')}
             className="
               animate-slide-up
-              bg-bg-card-alt rounded-xl p-sp-6
+              bg-white rounded-xl p-sp-6
+              shadow-card
               text-left cursor-pointer
               transition-shadow duration-200 hover:shadow-card-hover
             "
@@ -55,6 +59,9 @@ export default function RoleSelection({ onNavigate }) {
             <h2 className="text-display text-text-primary mt-sp-1">{t('roleSelection.caregiver')}</h2>
             <p className="text-sm text-text-secondary mt-sp-3">
               {t('roleSelection.caregiverDesc')}
+            </p>
+            <p className="text-sm text-text-secondary italic mt-sp-2">
+              {t('roleSelection.caregiverEmotional')}
             </p>
           </button>
         </div>

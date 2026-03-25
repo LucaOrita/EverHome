@@ -24,22 +24,22 @@ export default function SplashScreen({ onNavigate }) {
           <EverHomeLogo size={90} variant="dark" />
         </div>
 
-        {/* App name */}
+        {/* App name — refined weight 500-600, elegant feel */}
         <h1
-          className="animate-splash-text text-display text-white mt-sp-6"
-          style={{ fontWeight: 600 }}
+          className="animate-fade-in-d200 text-display text-white mt-sp-6"
+          style={{ fontWeight: 500 }}
         >
           {t('common.appName')}
         </h1>
 
         {/* Tagline */}
-        <p className="animate-splash-tagline text-body text-white/80 italic mt-sp-3 text-center">
+        <p className="animate-fade-in-d400 text-body text-white/80 italic mt-sp-3 text-center">
           {t('splash.tagline')}
         </p>
       </div>
 
       {/* Get Started button */}
-      <div className="animate-splash-button px-sp-6 mb-sp-12">
+      <div className="animate-slide-up-d600 px-sp-6 mb-sp-12">
         <Button
           variant="splash"
           onClick={() => onNavigate?.('how-it-works')}
