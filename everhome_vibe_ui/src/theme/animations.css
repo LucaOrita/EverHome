@@ -123,12 +123,17 @@
 }
 
 /* Checkmark draw animation for EmergencyConfirmed */
-@keyframes checkDraw {
-  from { stroke-dashoffset: 100; }
+@keyframes checkCircleDraw {
+  from { stroke-dashoffset: 283; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes checkTickDraw {
+  from { stroke-dashoffset: 60; }
   to { stroke-dashoffset: 0; }
 }
 .animate-check-draw {
-  animation: checkDraw 800ms ease-out 300ms both;
+  opacity: 0;
+  animation: fadeIn 300ms ease-out 200ms forwards;
 }
 
 /* Pulse ring for alert */

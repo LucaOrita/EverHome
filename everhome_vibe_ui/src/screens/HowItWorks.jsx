@@ -1,94 +1,86 @@
-import { useState } from 'react';
 import StatusBar from '../components/layout/StatusBar';
 import Button from '../components/ui/Button';
+import Card from '../components/ui/Card';
 import { useTranslation } from '../i18n/LanguageContext';
 import { ClipboardCheck, Wrench, ShieldCheck } from 'lucide-react';
 
-const slideIcons = [ClipboardCheck, Wrench, ShieldCheck];
-const slideKeys = ['assess', 'adapt', 'assure'];
+const steps = [
+  {
+    key: 'assess',
+    Icon: ClipboardCheck,
+    titleColor: 'text-primary-medium',
+    borderColor: '#3A7BC8',
+  },
+  {
+    key: 'adapt',
+    Icon: Wrench,
+    titleColor: 'text-accent-gold',
+    borderColor: '#C9A96E',
+  },
+  {
+    key: 'assure',
+    Icon: ShieldCheck,
+    titleColor: 'text-status-safe',
+    borderColor: '#2E8B57',
+  },
+];
 
 export default function HowItWorks({ onNavigate }) {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const { t } = useTranslation();
-
-  const slides = slideKeys.map((key, i) => ({
-    icon: slideIcons[i],
-    title: t(`howItWorks.${key}Title`),
-    description: t(`howItWorks.${key}Desc`),
-  }));
-
-  const isLast = currentSlide === slides.length - 1;
-  const slide = slides[currentSlide];
-  const SlideIcon = slide.icon;
 
   return (
     <div className="flex flex-col min-h-full bg-bg-page">
       <StatusBar variant="dark" />
 
-      <div className="flex-1 flex flex-col items-center justify-center px-sp-6">
-        {/* Step indicator */}
-        <p className="text-xs uppercase text-text-secondary tracking-wide font-semibold">
-          {currentSlide + 1} / {slides.length}
-        </p>
-
-        {/* Icon */}
-        <div
-          className="animate-fade-in mt-sp-8 bg-primary-dark rounded-full flex items-center justify-center"
-          style={{ width: 100, height: 100 }}
-          key={currentSlide}
-        >
-          <SlideIcon size={44} className="text-white" />
+      <div className="flex-1 px-sp-6 pb-sp-4 overflow-y-auto">
+        {/* Header */}
+        <div className="mt-sp-8 text-center">
+          <h1 className="text-h1 font-bold text-primary-dark">
+            {t('howItWorks.title')}
+          </h1>
+          <p className="text-body text-text-secondary mt-sp-2">
+            {t('howItWorks.subtitle')}
+          </p>
         </div>
 
-        {/* Title */}
-        <h2 className="animate-fade-in-d200 text-h1 text-primary-dark text-center mt-sp-6 font-heading">
-          {slide.title}
-        </h2>
-
-        {/* Description */}
-        <p className="animate-fade-in-d400 text-body text-text-secondary text-center mt-sp-4 leading-relaxed">
-          {slide.description}
-        </p>
-
-        {/* Dots */}
-        <div className="flex items-center gap-sp-2 mt-sp-8">
-          {slides.map((_, i) => (
-            <div
-              key={i}
-              className={`rounded-full transition-all duration-300 ${
-                i === currentSlide
-                  ? 'bg-primary-dark w-8 h-2'
-                  : 'bg-border-light w-2 h-2'
-              }`}
-            />
-          ))}
+        {/* Step Cards */}
+        <div className="mt-sp-8 flex flex-col gap-sp-5 card-stagger">
+          {steps.map((step, index) => {
+            const { key, Icon, titleColor, borderColor } = step;
+            return (
+              <Card
+                key={key}
+                borderColor={borderColor}
+                className={`animate-slide-up p-sp-6`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="flex items-start gap-sp-4">
+                  <div className="flex-shrink-0 mt-0.5">
+                    <Icon size={40} className="text-primary-dark" />
+                  </div>
+                  <div>
+                    <h2 className={`text-h2 font-bold ${titleColor}`}>
+                      {t(`howItWorks.${key}Title`)}
+                    </h2>
+                    <p className="text-body text-text-secondary mt-sp-2">
+                      {t(`howItWorks.${key}Desc`)}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            );
+          })}
         </div>
       </div>
 
-      {/* Button */}
+      {/* Continue Button */}
       <div className="px-sp-6 mb-sp-12">
         <Button
           variant="primary"
-          onClick={() => {
-            if (isLast) {
-              onNavigate?.('login-email');
-            } else {
-              setCurrentSlide((prev) => prev + 1);
-            }
-          }}
+          onClick={() => onNavigate?.('senior-dashboard')}
         >
           {t('common.continue')}
         </Button>
-
-        {/* Skip */}
-        {!isLast && (
-          <button
-            onClick={() => onNavigate?.('login-email')}
-            className="w-full text-center mt-sp-4 text-sm text-text-link font-semibold cursor-pointer hover:underline"
-          >
-            {t('common.skip')}
-          </button>
-        )}
       </div>
     </div>
   );

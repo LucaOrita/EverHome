@@ -6,8 +6,16 @@ import StatusBadge from '../components/ui/StatusBadge';
 import { Home, DoorOpen, Thermometer, Activity, ShieldAlert } from 'lucide-react';
 import { useTranslation } from '../i18n/LanguageContext';
 
+function getTimeOfDay() {
+  const hour = new Date().getHours();
+  if (hour >= 5 && hour < 12) return 'morning';
+  if (hour >= 12 && hour < 18) return 'afternoon';
+  return 'evening';
+}
+
 export default function SeniorDashboard({ onNavigate }) {
   const { t } = useTranslation();
+  const timeOfDay = getTimeOfDay();
 
   return (
     <div className="flex flex-col min-h-full bg-bg-page">
@@ -17,15 +25,15 @@ export default function SeniorDashboard({ onNavigate }) {
         {/* Greeting */}
         <div className="mt-sp-6">
           <p className="text-body text-text-secondary">
-            {t('seniorDashboard.greeting')('Margaret', 'morning')}
+            {t('seniorDashboard.greeting')('Margaret', timeOfDay)}
           </p>
-          <h1 className="text-display text-primary-medium">Margaret</h1>
+          <h1 className="text-display text-primary-dark">Margaret</h1>
         </div>
 
         {/* Cards */}
         <div className="mt-sp-6 flex flex-col gap-sp-3 card-stagger">
           {/* Home Status */}
-          <Card className="animate-slide-up">
+          <Card borderColor="#1A5F9E" className="animate-slide-up">
             <div className="flex items-start gap-sp-3">
               <Home size={24} className="text-primary-dark mt-0.5" />
               <div>
@@ -33,6 +41,9 @@ export default function SeniorDashboard({ onNavigate }) {
                 <StatusBadge label={t('common.allSafe')} color="safe" className="mt-sp-2" />
                 <p className="text-sm text-text-tertiary mt-sp-1">
                   {t('seniorDashboard.lastUpdated')} 11:08 AM
+                </p>
+                <p className="text-small text-text-secondary mt-sp-1">
+                  {t('seniorDashboard.allSensorsActive')}
                 </p>
               </div>
             </div>
@@ -85,7 +96,12 @@ export default function SeniorDashboard({ onNavigate }) {
 
         {/* Emergency Button */}
         <div className="mt-sp-5 mb-sp-4">
-          <Button variant="emergency">{t('common.emergency')}</Button>
+          <Button
+            variant="emergency"
+            onClick={() => onNavigate?.('emergency-confirmed')}
+          >
+            {t('common.emergency')}
+          </Button>
         </div>
       </div>
 
