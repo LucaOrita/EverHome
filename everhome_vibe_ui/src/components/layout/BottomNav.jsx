@@ -9,8 +9,7 @@ const tabs = [
 export default function BottomNav({ activeTab = 'home', onTabChange }) {
   return (
     <div
-      className="flex items-center justify-around bg-bg-card border-t border-divider shadow-nav"
-      style={{ height: 64, paddingBottom: 8 }}
+      className="flex items-center justify-around bg-bg-card border-t border-divider shadow-nav h-16 pb-2"
     >
       {tabs.map((tab) => {
         const isActive = activeTab === tab.id;
@@ -26,6 +25,7 @@ export default function BottomNav({ activeTab = 'home', onTabChange }) {
                 : 'px-4 py-2'
             }`}
             style={{ minWidth: 44, minHeight: 44 }}
+            aria-label={tab.label}
           >
             <Icon
               size={24}

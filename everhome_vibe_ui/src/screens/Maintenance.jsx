@@ -8,22 +8,34 @@ import Dropdown from '../components/ui/Dropdown';
 import { Info } from 'lucide-react';
 import { useTranslation } from '../i18n/LanguageContext';
 
-const sensorOptions = [
-  { value: 'smoke-kitchen', label: 'Smoke alarm – Kitchen' },
-  { value: 'motion-living', label: 'Motion – Living Room' },
-  { value: 'fall-bedroom', label: 'Fall Detector – Bedroom' },
-  { value: 'panic-bath', label: 'Panic Button – Bath' },
-];
-
 export default function Maintenance({ onNavigate }) {
   const { t } = useTranslation();
   const issues = t('maintenance.issues');
   const [selectedSensor, setSelectedSensor] = useState('smoke-kitchen');
   const [selectedIssue, setSelectedIssue] = useState(issues[0]);
+  const [showToast, setShowToast] = useState(false);
+
+  const sensorOptions = [
+    { value: 'smoke-kitchen', label: t('caregiverDashboard.smokeAlarmKitchen') },
+    { value: 'motion-living', label: t('caregiverDashboard.motionLivingRoom') },
+    { value: 'fall-bedroom', label: t('caregiverDashboard.fallDetectorBedroom') },
+    { value: 'panic-bath', label: t('caregiverDashboard.panicButtonBath') },
+  ];
+
+  const handleHelp = () => {
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+  };
 
   return (
     <div className="flex flex-col min-h-full bg-bg-card">
       <StatusBar variant="dark" />
+
+      {showToast && (
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-status-safe text-white px-sp-6 py-sp-3 rounded-full shadow-card-hover text-sm font-semibold animate-fade-in">
+          {t('maintenance.requestSubmitted')}
+        </div>
+      )}
 
       <div className="flex-1 px-sp-6 pb-sp-4 overflow-y-auto">
         {/* Title */}
@@ -69,7 +81,7 @@ export default function Maintenance({ onNavigate }) {
 
         {/* Help button */}
         <div className="flex justify-center mt-sp-6 mb-sp-4">
-          <Button variant="help">{t('common.help')}</Button>
+          <Button variant="help" onClick={handleHelp}>{t('common.help')}</Button>
         </div>
       </div>
 

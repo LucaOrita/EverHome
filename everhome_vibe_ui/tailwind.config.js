@@ -31,6 +31,11 @@ export default {
         'border-medium': '#9CA3AF',
         'divider': '#E5E7EB',
         'warning-bg': '#FFF8E7',
+        'emergency-warm': '#FFF0F0',
+        'emergency-calm': '#F0FFF5',
+        'bezel': '#1A1A2E',
+        'bg-gallery': '#f8fafc',
+        'bg-selected': '#F5F8FD',
       },
       borderRadius: {
         'sm': '8px',

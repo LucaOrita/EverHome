@@ -33,7 +33,7 @@ export default function SeniorDashboard({ onNavigate }) {
         {/* Cards */}
         <div className="mt-sp-6 flex flex-col gap-sp-3 card-stagger">
           {/* Home Status */}
-          <Card borderColor="#1A5F9E" className="animate-slide-up">
+          <Card borderColor="var(--color-primary-medium)" className="animate-slide-up">
             <div className="flex items-start gap-sp-3">
               <Home size={24} className="text-primary-dark mt-0.5" />
               <div>
@@ -42,7 +42,7 @@ export default function SeniorDashboard({ onNavigate }) {
                 <p className="text-sm text-text-tertiary mt-sp-1">
                   {t('seniorDashboard.lastUpdated')} 11:08 AM
                 </p>
-                <p className="text-small text-text-secondary mt-sp-1">
+                <p className="text-sm text-text-secondary mt-sp-1">
                   {t('seniorDashboard.allSensorsActive')}
                 </p>
               </div>

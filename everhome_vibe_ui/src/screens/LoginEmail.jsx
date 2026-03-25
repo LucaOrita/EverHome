@@ -20,8 +20,7 @@ export default function LoginEmail({ onNavigate }) {
 
         {/* App name — refined weight, elegant */}
         <h1
-          className="text-display text-primary-dark text-center mt-sp-4"
-          style={{ fontWeight: 500 }}
+          className="text-display text-primary-dark text-center mt-sp-4 font-medium"
         >
           {t('common.appName')}
         </h1>

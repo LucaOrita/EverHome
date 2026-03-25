@@ -13,7 +13,7 @@ export default function MobileFrame({ children, scale = 1, className = '', inter
           width: 390,
           height: 844,
           borderRadius: '40px',
-          border: '8px solid #1A1A2E',
+          border: '8px solid var(--color-bezel)',
           boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
           transform: `scale(${scale})`,
           transformOrigin: 'top left',
@@ -25,7 +25,7 @@ export default function MobileFrame({ children, scale = 1, className = '', inter
           style={{
             width: 120,
             height: 30,
-            backgroundColor: '#1A1A2E',
+            backgroundColor: 'var(--color-bezel)',
             borderRadius: '20px',
           }}
         />

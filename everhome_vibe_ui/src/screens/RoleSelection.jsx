@@ -24,14 +24,14 @@ export default function RoleSelection({ onNavigate }) {
         <div className="mt-sp-8 flex flex-col gap-sp-4 card-stagger">
           {/* Senior card — dark bg, white text */}
           <button
-            onClick={() => onNavigate?.('how-it-works')}
+            onClick={() => onNavigate?.('how-it-works-senior')}
             className="
               animate-slide-up
               bg-primary-dark rounded-xl p-sp-6
               text-left cursor-pointer
               transition-shadow duration-200 hover:shadow-card-hover
+              min-h-[160px]
             "
-            style={{ minHeight: 160 }}
           >
             <p className="text-body text-white/80">{t('roleSelection.iAmA')}</p>
             <h2 className="text-display text-white mt-sp-1">{t('roleSelection.senior')}</h2>
@@ -45,15 +45,15 @@ export default function RoleSelection({ onNavigate }) {
 
           {/* Caregiver card — white bg with shadow, distinct from page */}
           <button
-            onClick={() => onNavigate?.('how-it-works')}
+            onClick={() => onNavigate?.('how-it-works-caregiver')}
             className="
               animate-slide-up
               bg-white rounded-xl p-sp-6
               shadow-card
               text-left cursor-pointer
               transition-shadow duration-200 hover:shadow-card-hover
+              min-h-[160px]
             "
-            style={{ minHeight: 160 }}
           >
             <p className="text-body text-text-secondary">{t('roleSelection.iAmA')}</p>
             <h2 className="text-display text-text-primary mt-sp-1">{t('roleSelection.caregiver')}</h2>

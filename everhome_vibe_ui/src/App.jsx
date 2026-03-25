@@ -30,6 +30,29 @@ const screens = [
   { id: 'support', label: 'Support', component: Support },
 ];
 
+const screenSections = [
+  {
+    label: 'Auth Flow',
+    screens: ['splash', 'login-email', 'login-qr', 'role-selection'],
+  },
+  {
+    label: 'Onboarding',
+    screens: ['how-it-works'],
+  },
+  {
+    label: 'Senior Experience',
+    screens: ['senior-dashboard', 'emergency-confirmed'],
+  },
+  {
+    label: 'Caregiver Experience',
+    screens: ['caregiver-dashboard', 'alert-screen', 'subscription-plans'],
+  },
+  {
+    label: 'Shared',
+    screens: ['maintenance', 'support'],
+  },
+];
+
 function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -43,12 +66,14 @@ function useWindowWidth() {
 }
 
 function getGalleryScale(width) {
-  if (width >= 1024) return 0.55;
+  if (width >= 1200) return 0.48;
+  if (width >= 1024) return 0.5;
   if (width >= 768) return 0.5;
-  return 0.8;
+  return 0.75;
 }
 
 function getGalleryColumns(width) {
+  if (width >= 1200) return 'grid-cols-4';
   if (width >= 1024) return 'grid-cols-3';
   if (width >= 768) return 'grid-cols-2';
   return 'grid-cols-1';
@@ -58,19 +83,40 @@ export default function App() {
   const [mode, setMode] = useState('gallery');
   const [activeScreen, setActiveScreen] = useState('splash');
   const [modalScreen, setModalScreen] = useState(null);
+  const [selectedRole, setSelectedRole] = useState(null);
   const width = useWindowWidth();
 
   const handleNavigate = useCallback((screenId) => {
-    setActiveScreen(screenId);
-  }, []);
+    if (screenId === 'how-it-works-senior') {
+      setSelectedRole('senior');
+      setActiveScreen('how-it-works');
+    } else if (screenId === 'how-it-works-caregiver') {
+      setSelectedRole('caregiver');
+      setActiveScreen('how-it-works');
+    } else if (screenId === 'dashboard-from-onboarding') {
+      setActiveScreen(selectedRole === 'senior' ? 'senior-dashboard' : 'caregiver-dashboard');
+    } else {
+      setActiveScreen(screenId);
+    }
+  }, [selectedRole]);
 
   const scale = getGalleryScale(width);
   const columns = getGalleryColumns(width);
 
+  const activeScreenData = screens.find((s) => s.id === activeScreen);
+  const ActiveComponent = activeScreenData?.component;
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-slate-200">
-      {/* Header */}
-      <header className="text-center pt-sp-10 pb-sp-6 px-sp-6">
+    <div
+      className="min-h-screen"
+      style={{
+        background: 'radial-gradient(circle, var(--color-border-light) 1px, transparent 1px)',
+        backgroundSize: '24px 24px',
+        backgroundColor: 'var(--color-bg-gallery)',
+      }}
+    >
+      {/* Sticky Header */}
+      <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-divider text-center pt-sp-6 pb-sp-4 px-sp-6">
         <h1 className="text-display text-primary-dark font-heading">EverHome</h1>
         <p className="text-body text-text-secondary mt-sp-2">
           Smart home monitoring for seniors — Design Showcase
@@ -92,7 +138,7 @@ export default function App() {
             Gallery
           </button>
           <button
-            onClick={() => { setMode('interactive'); setActiveScreen('splash'); }}
+            onClick={() => { setMode('interactive'); setActiveScreen('splash'); setSelectedRole(null); }}
             className={`
               px-6 py-2.5 rounded-full text-button-sm font-semibold
               transition-all duration-200 cursor-pointer
@@ -110,31 +156,41 @@ export default function App() {
 
       {/* Gallery Mode */}
       {mode === 'gallery' && (
-        <div className={`grid ${columns} gap-10 justify-items-center px-sp-6 pb-sp-12 max-w-[1400px] mx-auto`}>
-          {screens.map((screen) => {
-            const ScreenComponent = screen.component;
-            return (
-              <div key={screen.id} className="flex flex-col items-center gap-sp-3">
-                <div
-                  className="cursor-pointer transition-transform duration-300 hover:scale-105"
-                  onClick={() => setModalScreen(screen.id)}
-                >
-                  <MobileFrame scale={scale} interactive={false}>
-                    <ScreenComponent onNavigate={() => {}} />
-                  </MobileFrame>
-                </div>
-                <span className="text-sm font-semibold text-text-secondary">
-                  {screen.label}
-                </span>
+        <div className="px-sp-6 pb-sp-12 pt-sp-8">
+          {screenSections.map((section) => (
+            <div key={section.label} className="w-full max-w-[1400px] mx-auto mb-sp-8">
+              <h2 className="text-xs uppercase tracking-widest text-text-secondary font-semibold mb-sp-4 px-sp-2">
+                {section.label}
+              </h2>
+              <div className={`grid ${columns} gap-10 justify-items-center`}>
+                {section.screens.map((screenId) => {
+                  const screen = screens.find((s) => s.id === screenId);
+                  const ScreenComponent = screen.component;
+                  return (
+                    <div key={screen.id} className="flex flex-col items-center gap-sp-3">
+                      <div
+                        className="cursor-pointer transition-all duration-300 hover:scale-[1.03] hover:shadow-card-hover rounded-phone"
+                        onClick={() => setModalScreen(screen.id)}
+                      >
+                        <MobileFrame scale={scale} interactive={false}>
+                          <ScreenComponent onNavigate={() => {}} />
+                        </MobileFrame>
+                      </div>
+                      <span className="text-sm font-semibold text-text-secondary">
+                        {screen.label}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       )}
 
       {/* Interactive Mode */}
       {mode === 'interactive' && (
-        <div className="flex flex-col items-center px-sp-6 pb-sp-12">
+        <div className="flex flex-col items-center px-sp-6 pb-sp-12 pt-sp-6">
           <button
             onClick={() => setMode('gallery')}
             className="mb-sp-5 text-sm text-text-link font-semibold hover:underline cursor-pointer"
@@ -142,19 +198,12 @@ export default function App() {
             ← Back to Gallery
           </button>
           <MobileFrame>
-            {screens.map((screen) => {
-              if (screen.id !== activeScreen) return null;
-              const ScreenComponent = screen.component;
-              return (
-                <ScreenComponent
-                  key={screen.id}
-                  onNavigate={handleNavigate}
-                />
-              );
-            })}
+            <div key={activeScreen} className="animate-fade-in">
+              <ActiveComponent onNavigate={handleNavigate} />
+            </div>
           </MobileFrame>
           <span className="mt-sp-3 text-sm font-semibold text-text-secondary">
-            {screens.find((s) => s.id === activeScreen)?.label}
+            {activeScreenData?.label}
           </span>
         </div>
       )}
@@ -187,6 +236,11 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* Footer */}
+      <footer className="text-center py-sp-8 text-sm text-text-tertiary border-t border-divider mt-sp-8">
+        EverHome — Smart Home Monitoring for Seniors | Design Showcase
+      </footer>
     </div>
   );
 }

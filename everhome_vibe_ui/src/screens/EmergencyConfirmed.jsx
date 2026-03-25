@@ -20,7 +20,7 @@ export default function EmergencyConfirmed({ onNavigate }) {
     <div
       className="flex flex-col min-h-full transition-colors duration-[3000ms] ease-in-out"
       style={{
-        backgroundColor: seconds < 3 ? '#FFF0F0' : '#F0FFF5',
+        backgroundColor: seconds < 3 ? 'var(--color-emergency-warm)' : 'var(--color-emergency-calm)',
       }}
     >
       <StatusBar variant="dark" />
@@ -39,7 +39,7 @@ export default function EmergencyConfirmed({ onNavigate }) {
               cx="50"
               cy="50"
               r="45"
-              stroke="#2E8B57"
+              stroke="var(--color-status-safe)"
               strokeWidth="4"
               fill="none"
               strokeDasharray="283"
@@ -50,7 +50,7 @@ export default function EmergencyConfirmed({ onNavigate }) {
             />
             <path
               d="M30 52 L44 66 L70 38"
-              stroke="#2E8B57"
+              stroke="var(--color-status-safe)"
               strokeWidth="4"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -79,7 +79,7 @@ export default function EmergencyConfirmed({ onNavigate }) {
               <p className="text-body text-text-primary font-semibold">
                 {t('emergencyConfirmed.emergencyServices')}
               </p>
-              <p className="text-small text-text-secondary">
+              <p className="text-sm text-text-secondary">
                 {t('emergencyConfirmed.notCalledYet')}
               </p>
             </div>
@@ -100,7 +100,7 @@ export default function EmergencyConfirmed({ onNavigate }) {
         </p>
 
         {/* Timer */}
-        <p className="text-small text-text-tertiary text-center mt-sp-4">
+        <p className="text-sm text-text-tertiary text-center mt-sp-4">
           {t('emergencyConfirmed.alertSent')} {seconds} {t('emergencyConfirmed.secondsAgo')}
         </p>
 

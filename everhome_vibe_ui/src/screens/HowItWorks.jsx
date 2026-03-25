@@ -9,19 +9,19 @@ const steps = [
     key: 'assess',
     Icon: ClipboardCheck,
     titleColor: 'text-primary-medium',
-    borderColor: '#3A7BC8',
+    borderColor: 'var(--color-primary-light)',
   },
   {
     key: 'adapt',
     Icon: Wrench,
     titleColor: 'text-accent-gold',
-    borderColor: '#C9A96E',
+    borderColor: 'var(--color-accent-gold)',
   },
   {
     key: 'assure',
     Icon: ShieldCheck,
     titleColor: 'text-status-safe',
-    borderColor: '#2E8B57',
+    borderColor: 'var(--color-status-safe)',
   },
 ];
 
@@ -77,7 +77,7 @@ export default function HowItWorks({ onNavigate }) {
       <div className="px-sp-6 mb-sp-12">
         <Button
           variant="primary"
-          onClick={() => onNavigate?.('senior-dashboard')}
+          onClick={() => onNavigate?.('dashboard-from-onboarding')}
         >
           {t('common.continue')}
         </Button>

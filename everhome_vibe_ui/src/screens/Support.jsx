@@ -28,10 +28,15 @@ export default function Support({ onNavigate }) {
           <div className="mt-sp-3 space-y-sp-2">
             <p className="text-sm text-text-primary">
               <span className="font-semibold">{t('support.email')}</span>{' '}
-              <span className="text-text-link">office@everhome.com</span>
+              <a href="mailto:office@everhome.com" className="text-text-link hover:underline">
+                office@everhome.com
+              </a>
             </p>
             <p className="text-sm text-text-primary">
-              <span className="font-semibold">{t('support.cell')}</span> +40735873164
+              <span className="font-semibold">{t('support.cell')}</span>{' '}
+              <a href="tel:+40735873164" className="text-text-link hover:underline">
+                +40735873164
+              </a>
             </p>
           </div>
         </Card>
@@ -53,12 +58,31 @@ export default function Support({ onNavigate }) {
           </div>
         </Card>
 
+        {/* Testimonial */}
+        <Card variant="info" className="mt-sp-4">
+          <div className="flex gap-sp-3">
+            <div className="flex-shrink-0 text-primary-light text-3xl leading-none mt-1">
+              ❝
+            </div>
+            <div>
+              <p className="text-body text-text-primary italic">
+                {t('support.testimonial.quote')}
+              </p>
+              <p className="text-sm text-text-secondary mt-sp-2 text-right">
+                — {t('support.testimonial.author')}
+              </p>
+            </div>
+          </div>
+        </Card>
+
         {/* Website link */}
         <div className="mt-sp-6">
           <p className="text-sm text-text-secondary mb-sp-3">
             {t('support.visitWebsite')}
           </p>
-          <Button onClick={() => {}}>www.everhome.com</Button>
+          <Button onClick={() => window.open('https://www.everhome.com', '_blank')}>
+            www.everhome.com
+          </Button>
         </div>
       </div>
 

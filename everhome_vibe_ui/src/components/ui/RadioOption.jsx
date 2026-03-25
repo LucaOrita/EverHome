@@ -7,7 +7,7 @@ export default function RadioOption({ label, selected = false, onSelect, classNa
         bg-bg-card border border-border-light rounded-lg
         px-5 py-sp-4 cursor-pointer
         transition-all duration-200 ease-out
-        ${selected ? 'border-primary-dark bg-[#F5F8FD]' : 'hover:bg-bg-page'}
+        ${selected ? 'border-primary-dark bg-bg-selected' : 'hover:bg-bg-page'}
         ${className}
       `}
       style={{ minHeight: 44 }}

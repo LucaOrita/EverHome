@@ -1,5 +1,5 @@
 export default function EverHomeLogo({ size = 80, variant = 'dark' }) {
-  const color = variant === 'light' ? '#FFFFFF' : '#0D3B66';
+  const color = variant === 'light' ? '#FFFFFF' : 'var(--color-primary-dark)';
 
   return (
     <svg

@@ -28,6 +28,11 @@
   --color-border-light: #D1D5DB;
   --color-border-medium: #9CA3AF;
   --color-divider: #E5E7EB;
+  --color-emergency-warm: #FFF0F0;
+  --color-emergency-calm: #F0FFF5;
+  --color-bezel: #1A1A2E;
+  --color-bg-gallery: #f8fafc;
+  --color-bg-selected: #F5F8FD;
 
   --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;

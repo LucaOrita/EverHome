@@ -2,7 +2,7 @@ export default function StatusBar({ variant = 'dark' }) {
   const textColor = variant === 'light' ? 'text-white' : 'text-text-primary';
 
   return (
-    <div className={`flex items-center justify-between px-sp-6 ${textColor}`} style={{ height: 44 }}>
+    <div className={`flex items-center justify-between px-sp-6 h-11 ${textColor}`}>
       {/* Time */}
       <span className="text-sm font-semibold">9:41</span>
 
