@@ -8,7 +8,7 @@ export default function SplashScreen({ onNavigate }) {
 
   return (
     <div
-      className="flex flex-col min-h-full"
+      className="flex flex-col h-full"
       style={{
         background: 'linear-gradient(180deg, var(--color-bg-splash) 0%, var(--color-bg-splash-end) 100%)',
       }}

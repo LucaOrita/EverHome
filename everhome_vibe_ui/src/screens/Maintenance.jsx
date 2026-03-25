@@ -28,7 +28,7 @@ export default function Maintenance({ onNavigate }) {
   };
 
   return (
-    <div className="flex flex-col min-h-full bg-bg-card">
+    <div className="flex flex-col h-full bg-bg-card">
       <StatusBar variant="dark" />
 
       {showToast && (
@@ -37,7 +37,7 @@ export default function Maintenance({ onNavigate }) {
         </div>
       )}
 
-      <div className="flex-1 px-sp-6 pb-sp-4 overflow-y-auto">
+      <div className="flex-1 min-h-0 px-sp-6 pb-sp-4 overflow-y-auto">
         {/* Title */}
         <h1 className="text-h1 text-primary-medium mt-sp-6">{t('maintenance.title')}</h1>
 

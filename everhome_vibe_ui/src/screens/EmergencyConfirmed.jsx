@@ -18,14 +18,14 @@ export default function EmergencyConfirmed({ onNavigate }) {
 
   return (
     <div
-      className="flex flex-col min-h-full transition-colors duration-[3000ms] ease-in-out"
+      className="flex flex-col h-full transition-colors duration-[3000ms] ease-in-out"
       style={{
         backgroundColor: seconds < 3 ? 'var(--color-emergency-warm)' : 'var(--color-emergency-calm)',
       }}
     >
       <StatusBar variant="dark" />
 
-      <div className="flex-1 flex flex-col items-center px-sp-6 pb-sp-6 overflow-y-auto">
+      <div className="flex-1 min-h-0 flex flex-col items-center px-sp-6 pb-sp-6 overflow-y-auto">
         {/* Animated Checkmark */}
         <div className="mt-sp-10 flex items-center justify-center">
           <svg

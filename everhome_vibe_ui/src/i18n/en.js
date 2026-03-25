@@ -14,6 +14,7 @@ export default {
     allSafe: 'All Safe',
     or: 'or',
     skip: 'Skip',
+    next: 'Next',
   },
   splash: {
     tagline: 'Because home is where life continues',

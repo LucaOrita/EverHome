@@ -14,6 +14,7 @@ export default {
     allSafe: 'Totul e în siguranță',
     or: 'sau',
     skip: 'Sari peste',
+    next: 'Următorul',
   },
   splash: {
     tagline: 'Pentru că acasă e locul unde viața continuă',

@@ -11,10 +11,10 @@ export default function CaregiverDashboard({ onNavigate }) {
   const [showAlertDemo, setShowAlertDemo] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-full bg-bg-page">
+    <div className="flex flex-col h-full bg-bg-page">
       <StatusBar variant="dark" />
 
-      <div className="flex-1 px-sp-6 pb-sp-4 overflow-y-auto">
+      <div className="flex-1 min-h-0 px-sp-6 pb-sp-4 overflow-y-auto">
         {/* Alert Demo Toggle */}
         <div className="mt-sp-3 text-right">
           <span

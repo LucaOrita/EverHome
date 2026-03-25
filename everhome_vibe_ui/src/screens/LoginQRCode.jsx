@@ -8,7 +8,7 @@ export default function LoginQRCode({ onNavigate }) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col min-h-full bg-bg-card">
+    <div className="flex flex-col h-full bg-bg-card">
       <StatusBar variant="dark" />
 
       <div className="flex-1 px-sp-6 flex flex-col">

@@ -10,10 +10,10 @@ export default function Support({ onNavigate }) {
   const faqs = t('support.faqs');
 
   return (
-    <div className="flex flex-col min-h-full bg-bg-card">
+    <div className="flex flex-col h-full bg-bg-card">
       <StatusBar variant="dark" />
 
-      <div className="flex-1 px-sp-6 pb-sp-4 overflow-y-auto">
+      <div className="flex-1 min-h-0 px-sp-6 pb-sp-4 overflow-y-auto">
         {/* Header */}
         <div className="flex items-center gap-sp-3 mt-sp-6">
           <Headphones size={28} className="text-primary-dark" />
