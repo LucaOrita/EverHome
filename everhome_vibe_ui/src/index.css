@@ -1,0 +1,65 @@
+@import './theme/animations.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary-dark: #0D3B66;
+  --color-primary-medium: #1A5F9E;
+  --color-primary-light: #3A7BC8;
+  --color-bg-page: #E8F0FE;
+  --color-bg-card: #FFFFFF;
+  --color-bg-card-alt: #F0F4F8;
+  --color-bg-card-blue: #D0DEF0;
+  --color-bg-info: #D6E6F5;
+  --color-bg-splash: #0D3B66;
+  --color-bg-splash-end: #0A2D4D;
+  --color-status-safe: #2E8B57;
+  --color-status-warning: #E8A020;
+  --color-status-error: #E53935;
+  --color-status-info: #1A5F9E;
+  --color-accent-gold: #C9A96E;
+  --color-accent-gold-hover: #B8944F;
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #6B7280;
+  --color-text-tertiary: #9CA3AF;
+  --color-text-link: #1A5F9E;
+  --color-border-light: #D1D5DB;
+  --color-border-medium: #9CA3AF;
+  --color-divider: #E5E7EB;
+
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background-color: #f0f2f5;
+  line-height: 1.5;
+}
+
+/* Hide scrollbar inside phone frame */
+.phone-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.phone-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
